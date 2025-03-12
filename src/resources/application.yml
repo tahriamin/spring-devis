@@ -1,3 +1,19 @@
-spring.datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:bootexample;MODE=MySQL
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/world?useSSL=false&serverTimezone=UTC
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        hibernate:
+            ddl-auto: update  # Options : none, validate, update, create, create-drop
+        show-sql: true  # Pour afficher les requêtes SQL exécutées dans la console
+
+    sql:
+        init:
+            mode: always  # Permet d'exécuter les scripts schema.sql et data.sql au démarrage (optional)
+
+server:
+    port: 8080  # Port de l'application Spring Boot

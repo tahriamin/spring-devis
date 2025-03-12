@@ -1,10 +1,16 @@
 package com.site.devis.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @Entity
+@Builder
+@RequiredArgsConstructor
+@AllArgsConstructor
 @Table(name = "utilisateurs")
 public class Utilisateur {
     @Id
