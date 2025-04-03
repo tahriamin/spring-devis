@@ -3,12 +3,9 @@ package com.site.devis.service;
 import com.site.devis.dto.UtilisateurDto;
 import com.site.devis.model.Utilisateur;
 import com.site.devis.repository.UtilisateurRepository;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Slf4j
 @Service
@@ -33,10 +30,6 @@ public class UtilisateurService {
         log.info("utilisateur saved id is {}", savedUser.getId());
 
         return savedUser;
-    }
-
-    public List<Utilisateur> findAll(){
-        return utilisateurRepository.findAll();
     }
 }
 

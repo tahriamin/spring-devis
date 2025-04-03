@@ -1,21 +1,22 @@
 package com.site.devis.service;
 
+import com.site.devis.dto.DevisDto;
 import com.site.devis.model.Devis;
 import com.site.devis.repository.DevisRepository;
+import com.site.devis.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DevisService {
-    
-    private final DevisRepository devisRepository;
 
     @Autowired
-    public DevisService(DevisRepository devisRepository) {
-        this.devisRepository = devisRepository;
-    }
+    private DevisRepository devisRepository;
+    @Autowired
+    private UtilisateurRepository utilisateurRepository;
 
     public List<Devis> getAllDevis() {
         return devisRepository.findAll();
@@ -32,4 +33,18 @@ public class DevisService {
     public void deleteDevis(Long id) {
         devisRepository.deleteById(id);
     }
+
+    public Devis saveDevis(DevisDto devisDto) {
+        Devis devis = Devis.builder()
+                .details(devisDto.getDetails())
+                .budget(devisDto.getBudget())
+                .clientNom(devisDto.getClientNom())
+                .build();
+        return devisRepository.save(devis);
+    }
+
+    public List<Devis> getDevisByUtilisateur(Long utilisateurId) {
+        return devisRepository.findByUtilisateurId(utilisateurId);
+    }
+
 }

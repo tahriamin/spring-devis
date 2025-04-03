@@ -1,19 +1,20 @@
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/world?useSSL=false&serverTimezone=UTC
-        username: root
-        password: root
-        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:h2:mem:testdb  # Base de données en mémoire (modifiable si besoin)
+        driver-class-name: org.h2.Driver
+        username: sa
+        password:  # Aucun mot de passe par défaut
 
     jpa:
-        database-platform: org.hibernate.dialect.MySQL8Dialect
+        database-platform: org.hibernate.dialect.H2Dialect
         hibernate:
-            ddl-auto: update  # Options : none, validate, update, create, create-drop
-        show-sql: true  # Pour afficher les requêtes SQL exécutées dans la console
+            ddl-auto: update  # Permet d'automatiser la création des tables
+        show-sql: true  # Pour voir les requêtes SQL dans la console
 
-    sql:
-        init:
-            mode: always  # Permet d'exécuter les scripts schema.sql et data.sql au démarrage (optional)
+    h2:
+        console:
+            enabled: true  # Active la console H2 pour visualiser les données
+            path: /h2-console  # URL d'accès : http://localhost:8080/h2-console
 
 server:
     port: 8080  # Port de l'application Spring Boot
