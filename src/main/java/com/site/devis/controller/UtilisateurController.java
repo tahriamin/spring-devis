@@ -29,6 +29,12 @@ public class UtilisateurController {
         return ResponseEntity.ok("Utilisateur enregistré avec succès !");
     }
 
+    @GetMapping
+    public ResponseEntity<List<Utilisateur>> getAllUtilisateurs() {
+        List<Utilisateur> allUtilisateurs = utilisateurService.findAllUtilisateurs();
+        return ResponseEntity.ok(allUtilisateurs);
+    }
+
     @GetMapping("/{email}")
     public ResponseEntity<Void> getUtilisateurByEmail(@PathVariable String email) {
         Optional<Utilisateur> utilisateurByEmail = utilisateurService.findUtilisateurByEmail(email);
