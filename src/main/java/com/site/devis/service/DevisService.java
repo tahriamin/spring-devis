@@ -22,14 +22,6 @@ public class DevisService {
         return devisRepository.findAll();
     }
 
-    public Optional<Devis> getDevisById(Long id) {
-        return devisRepository.findById(id);
-    }
-
-    public Devis createDevis(Devis devis) {
-        return devisRepository.save(devis);
-    }
-
     public void deleteDevis(Long id) {
         devisRepository.deleteById(id);
     }
